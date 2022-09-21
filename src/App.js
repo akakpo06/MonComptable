@@ -4,10 +4,8 @@ import Home from "./components/Home";
 import Inscription from "./components/inscription";
 import Connexion from "./components/connexion";
 import Message from "./components/message";
-import Dashboard from "./components/Dasboard";
-import FileDrop from "./components/payment-file-drop";
-import Declaration from "./components/Declaration";
-import Payment from "./components/final-payment";
+import Dashboard from "./components/Dashboard";
+import TaxPayment from "./components/Tax-payment";
 import './App.css';
 
 function App() {
@@ -20,9 +18,7 @@ function App() {
           <Route path="/connexion" element={<Connexion />} />
           <Route path="/contact" element={<Message />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/addfiles" element={<FileDrop />} />
-          <Route path="/declaration" element={<Declaration />} />
-          <Route path="/payment" element={<Payment />} />
+          <Route path="/tax-pay" element={<TaxPayment />} />
         </Routes>
       </BrowserRouter>
     </>

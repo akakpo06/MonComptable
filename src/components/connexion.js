@@ -18,13 +18,14 @@ function Connexion() {
     const handleSubmit = (event) => {
         event.preventDefault();
         axios.get(`http://moncomptable.localhost:80/auth.php/${inputs.email}/${inputs.password}`).then((response) => {
-            console.log(response.data);
-            // if () {
 
-            // }
-            // else{
-
-            // }
+            if (response.data.status) {
+                const key = response.data.id;
+                navigate("/dashboard");
+            }
+            else{
+                setErrMsg(response.data.message)
+            }
         })
     }
     return(
@@ -34,7 +35,7 @@ function Connexion() {
                 <div className="left-box-container"></div>
                 <div className="right-box-container">
                     <div className="form-title">
-                        <span>Veuilez entrer vos identifiants</span>
+                        <span>Veuillez entrer vos identifiants</span>
                     </div>
                     <div className="form-container">
                         <form onSubmit={handleSubmit}>
@@ -44,11 +45,13 @@ function Connexion() {
                             <label>
                                 <input type="password" placeholder="Mot de passe" name="password" onChange={handleChange}/>
                             </label>
-                            {/* <Link to="/dashboard"> */}
-                                <button>Se Connecter</button>
-                            {/* </Link> */}
+                            <button>Se Connecter</button>
+                            <div className="error-container">{errMsg}</div>
                         </form>
-                        <a>Pas de compte? S'inscrire</a>
+                        <Link to="/inscription">
+                            <a>Pas de compte? S'inscrire</a>
+                        </Link>
+                        
                         <a>Mot de passe oublié</a>
                     </div>
                 </div>

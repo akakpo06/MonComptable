@@ -37,7 +37,14 @@ function Dashboard() {
                             <span>zqgrseqtyererdrzsetre</span>
                         </div>
                     </div>
-                    <div className="historic-bar"></div>
+                    <div className="historic-bar">
+                        <div className="historic-text">
+                            <span>Paiement de l'tjtfkje</span>
+                        </div>
+                        <div className="historic-date">
+                            <span>zqgrseqtyererdrzsetre</span>
+                        </div>
+                    </div>
                     <div className="historic-bar"></div>
                     <div className="historic-bar"></div>
                     <div className="historic-bar"></div>

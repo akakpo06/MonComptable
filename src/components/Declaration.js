@@ -1,19 +1,30 @@
+import { useState } from "react";
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 import Process from "./Return-process-level";
 import "./declaration.css"
 
-function Declaration() {
+function Declaration(props) {
+
+    
+    const handler = props.handler();
+    const setInputs = props.setter();
+
+
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInputs(values => ({...values, [name]: value}))
+    }
+
     return(
         <>
-            <Navbar />
-            <Process drop="done" declare="done" pay="" prev="addfiles"></Process>
             <div>
                 <form>
                     <div className="double-input-container">
                         <label>
                             <span>Nature de l'impôt :</span>
-                            <select name="nature-impot">
+                            <select name="nature-impot" onChange={handleChange}>
                                 <optgroup>
                                     <option>Nature de l'impôt</option>
                                     <option>Retenu Sur Salaire</option>
@@ -23,7 +34,7 @@ function Declaration() {
                         </label>
                         <label>
                             <span>Néant :</span>
-                            <select name="neant">
+                            <select name="neant" onChange={handleChange}>
                                 <optgroup>
                                     <option value="non">Non</option>
                                     <option value="oui">Oui</option>
@@ -34,7 +45,7 @@ function Declaration() {
                     <div className="double-input-container">
                         <label>
                             <span>Période :</span>
-                            <select name="periode">
+                            <select name="periode" onChange={handleChange}>
                                 <optgroup>
                                     <option value="">Période</option>
                                     <option value="janvier">Janvier</option>
@@ -44,7 +55,7 @@ function Declaration() {
                         </label>
                         <label>
                             <span>Année :</span>
-                            <select name="annee">
+                            <select name="declaration-year" onChange={handleChange}>
                                 <optgroup>
                                     <option value="">Année</option>
                                     <option value="2022">2022</option>
@@ -67,8 +78,8 @@ function Declaration() {
                                 <span>Annexes</span>
                             </button>
                         </Link>
-                        <Link to="/payment">
-                            <button className="btn-first-type">
+                        <Link to="">
+                            <button type="button" className="btn-first-type" onClick={() => handler("+")}>
                                 <span>Suivant</span>
                             </button>
                         </Link>

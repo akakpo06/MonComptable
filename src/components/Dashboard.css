@@ -45,6 +45,7 @@
     width: 350px;
     height: 40px;
     border-radius: 30px;
+    padding-left: 10px;
 }
 .Search-filter-bar select{
     width: 150px;
@@ -58,7 +59,7 @@
     height: 500px;
     box-shadow: #ccc 1px 1px 50px;
     padding: 1% 2%;
-    overflow: scroll;
+    overflow-y: auto;
 }
 .historic-bar{
     height: 80px;

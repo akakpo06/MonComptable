@@ -13,7 +13,7 @@ function Navbar() {
                         <span>Tableau de bord</span>
                     </button>
                 </Link>
-                <Link to="/addfiles">
+                <Link to="/tax-pay">
                     <button className="btn-first-type">
                             <span>Payer ses taxes</span>
                     </button>

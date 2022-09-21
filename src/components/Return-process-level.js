@@ -4,25 +4,23 @@ import exit from "../assets/left-arrow.png"
 
 function Process(props) {
 
-// const navigate = useNavigate();
-// const back = (location) => {
-//     navigate(location);
-// }
+    const handler = props.handler();
+
     return(
         <div className="return-state-container">
             <div className="return-button-container">
-                    <button>
+                    <button onClick={() => handler("-")}>
                         <img src={exit} />
                     </button>
             </div>
             <div className="state-container">
-                <div className="circle circle-line" id={props.drop.toString()}>
+                <div className="circle circle-line">
                     <span>Dépôt des documents</span>
                 </div>
-                <div className="circle circle-line" id={props.declare.toString()}>
+                <div className="circle circle-line">
                     <span>Déclarations</span>
                 </div>
-                <div className="circle" id={props.pay.toString()}>
+                <div className="circle">
                     <span>Paiement</span>
                 </div>
             </div>

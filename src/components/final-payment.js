@@ -2,17 +2,27 @@ import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 import Process from "./Return-process-level";
 
-function Payment() {
+function Payment(props) {
+    
+    const handler = props.handler();
+    const setInputs = props.setter();
+    const handleSubmit = props.submiter();
+
+
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInputs(values => ({...values, [name]: value}))
+    }
+
     return(
         <>
-            <Navbar />
-            <Process drop="done" declare="done" pay="done" prev="declaration"></Process>
             <div>
-                <form>
+                <form onSubmit={() => handleSubmit()}>
                     <div className="double-input-container">
                         <label>
                             <span>Payer via :</span>
-                            <select name="moyen-paiement">
+                            <select name="pay-mean" onChange={handleChange}>
                                 <optgroup>
                                     <option>Moyen de paiement</option>
                                     <option>TMoney</option>
@@ -23,17 +33,17 @@ function Payment() {
                         </label>
                         <label>
                             <span>Numéro du compte/Numéro de téléphone :</span>
-                            <input placeholder="Numéro du compte/Numéro de téléphone" name=""/>
+                            <input placeholder="Numéro du compte/Numéro de téléphone" name="pay-source-number" onChange={handleChange} />
                         </label>
                     </div>
                     <div className="double-input-container">
                         <label>
                             <span>Montant</span>
-                            <input placeholder="" />
+                            <input placeholder="montant" name="amount" onChange={handleChange}/>
                         </label>
                         <label>
-                            <span>Année :</span>
-                            <select name="annee">
+                            <span>Année d'expiration de la carte(paiement bancaires) :</span>
+                            <select name="expiration-year" onChange={handleChange} >
                                 <optgroup>
                                     <option value="">Année</option>
                                     <option value="2022">2022</option>
@@ -42,11 +52,9 @@ function Payment() {
                             </select>
                         </label>
                     </div>
-                    <Link to="/dashboard">
-                        <button className="btn-first-type">
+                        <button type="submit" className="btn-first-type">
                             <span>Valider</span>
                         </button>
-                    </Link>
                 </form>
             </div>
         </>

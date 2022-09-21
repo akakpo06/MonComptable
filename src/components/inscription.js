@@ -16,15 +16,20 @@ function Inscription() {
     }
     const handleSubmit = (event) => {
         event.preventDefault()
-        // if (inputs["conf-password"] === inputs["password"]) {
+        if (inputs["conf-password"] === inputs["password"]) {
             axios.post("http://moncomptable.localhost:80/register.php", inputs).then(function(response) {
+                if (response.data.status) {
+                    navigate("/connexion");
+                }
+                else{
+                    setErrMsg(response.data.message)
+                }
                 console.log(response.data)
-                navigate("/connexion");
-            })
-        // }
-        // else{
-        //     setErrMsg("Vots mots de passes ne correspondent pas")
-        // }
+            }).catch(err => console.log(err))
+        }
+        else{
+            setErrMsg("Vots mots de passes ne correspondent pas")
+        }
     }
 
     return(
@@ -33,7 +38,7 @@ function Inscription() {
                 <div className="left-box-container"></div>
                 <div className="right-box-container">
                     <div className="form-title">
-                        <span>Veuilez entrer vos informations</span>
+                        <span>Veuillez entrer vos informations</span>
                     </div>
                     <div className="form-container">
                         <form onSubmit={handleSubmit}>
@@ -47,9 +52,10 @@ function Inscription() {
                                 <input type="password" placeholder="Mot de passe" name="password" onChange={handleChange}/>
                             </label>
                             <label>
-                                <input type="password" placeholder="Confirmer le mot de passe" name="conf-password" onChange={handleChange}/>
+                                <input type="password" placeholder="Confirmer le mot de passe" name="conf-password" onChange={handleChange} />
                             </label>
-                            <button>S'incrire</button>
+                            <button>S'inscrire</button>
+                            <div className="error-container">{errMsg}</div>
                         </form>
                     </div>
                 </div>
