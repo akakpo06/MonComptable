@@ -7,16 +7,21 @@ function FileDrop(props) {
     const handler = props.handler();
     const setInputs = props.setter();
 
-    console.log(props.handler)
     const handleChange = (event) => {
         const name = event.target.name;
-        const value = event.target.value;
-        setInputs(values => ({...values, [name]: value}))
+        if(name !== "files") {
+            const value = event.target.value;
+            setInputs(values => ({...values, [name]: value}))
+        }
+        else{
+            const value = event.target.files[0];
+            setInputs(values => ({...values, [name]: value}))
+        }
     }
     return(
         <>
             <div className="form-container">
-                <form>
+                <form method="post" encType="multipart/form-data">
                     <label>
                         <input type="file" name="files" onChange={handleChange}/>
                     </label>

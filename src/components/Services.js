@@ -2,7 +2,7 @@ import car from "../assets/coins.jpg";
 import Card from "./Card";
 function Services() {
     return (
-        <section>
+        <section id="services">
             <div className="section-title-container">
                 <span>Nos Services</span>
                 < hr/>

@@ -17,7 +17,8 @@ function Inscription() {
     const handleSubmit = (event) => {
         event.preventDefault()
         if (inputs["conf-password"] === inputs["password"]) {
-            axios.post("http://moncomptable.localhost:80/register.php", inputs).then(function(response) {
+            axios.post("http://moncomptable.localhost:80/api/user/register.php", inputs).then(function(response) {
+
                 if (response.data.status) {
                     navigate("/connexion");
                 }

@@ -16,11 +16,10 @@ function Message() {
         }
         const handleSubmit = (e) => {
             e.preventDefault();
-            axios.post("http://moncomptable.localhost:80/mail.php", inputs).then(function(response) {
+            axios.post("http://moncomptable.localhost:80/api/mail/mail.php", inputs).then(function(response) {
                 if (response.data) {
                     navigate("/");
                 }
-                console.log(response.data)
             })
         }
     return(

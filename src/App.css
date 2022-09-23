@@ -42,6 +42,9 @@ button{
 button:hover{
   transform: scale(1.1);
 }
+Link span,
 a{
+  color: blue;
+  text-decoration: underline;
   cursor: pointer;
 }

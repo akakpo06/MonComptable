@@ -23,6 +23,11 @@
     padding: 0% 8%;
     font-size: 1.1rem;
 }
+.navlinks-container a,
+.navlinks-container Link span{
+    color: white;
+    text-decoration: none;
+}
 header .buttons-container{
     width: 17%;
     display: flex;
@@ -80,23 +85,4 @@ header .buttons-container{
     display: block;
     font-size: 3rem;
     text-align: center;
-}
-                    /* responsive tablet */
-@media only screen and (max-width: 1200px) {
-    .navlinks-container{
-        margin-left: 15%;
-    }
-    header .buttons-container{
-        width: 20%;
-    }
-    .buttons-container button{
-        width: 100px;
-    }
-    .arrow-container,
-    .quoter{
-        width: 100px;
-    }
-    .description-container{
-        width: 300px;
-    }
 }

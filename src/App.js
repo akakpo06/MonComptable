@@ -6,9 +6,11 @@ import Connexion from "./components/connexion";
 import Message from "./components/message";
 import Dashboard from "./components/Dashboard";
 import TaxPayment from "./components/Tax-payment";
+import "./components/responsive.css"
 import './App.css';
 
 function App() {
+  
   return (
     <>
       <BrowserRouter>

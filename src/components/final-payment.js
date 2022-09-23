@@ -22,18 +22,18 @@ function Payment(props) {
                     <div className="double-input-container">
                         <label>
                             <span>Payer via :</span>
-                            <select name="pay-mean" onChange={handleChange}>
+                            <select name="paid_by" onChange={handleChange}>
                                 <optgroup>
                                     <option>Moyen de paiement</option>
-                                    <option>TMoney</option>
-                                    <option>Flooz</option>
-                                    <option>Ecobank</option>
+                                    <option value="Tmoney">TMoney</option>
+                                    <option value="Flooz">Flooz</option>
+                                    <option value="Ecobank">Ecobank</option>
                                 </optgroup>
                             </select>
                         </label>
                         <label>
                             <span>Numéro du compte/Numéro de téléphone :</span>
-                            <input placeholder="Numéro du compte/Numéro de téléphone" name="pay-source-number" onChange={handleChange} />
+                            <input placeholder="Numéro du compte/Numéro de téléphone" name="account_number" onChange={handleChange} />
                         </label>
                     </div>
                     <div className="double-input-container">
@@ -43,7 +43,7 @@ function Payment(props) {
                         </label>
                         <label>
                             <span>Année d'expiration de la carte(paiement bancaires) :</span>
-                            <select name="expiration-year" onChange={handleChange} >
+                            <select name="expiry-year" onChange={handleChange} >
                                 <optgroup>
                                     <option value="">Année</option>
                                     <option value="2022">2022</option>
@@ -52,7 +52,7 @@ function Payment(props) {
                             </select>
                         </label>
                     </div>
-                        <button type="submit" className="btn-first-type">
+                        <button className="btn-first-type">
                             <span>Valider</span>
                         </button>
                 </form>

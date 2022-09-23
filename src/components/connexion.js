@@ -17,12 +17,16 @@ function Connexion() {
     }
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.get(`http://moncomptable.localhost:80/auth.php/${inputs.email}/${inputs.password}`).then((response) => {
+        axios.post(`http://moncomptable.localhost:80/api/user/auth.php/`, inputs).then((response) => {
 
             if (response.data.status) {
-                const key = response.data.id;
+                const infos = {
+                    token: response.data.token,
+                    id: response.data.id
+                }
+                window.localStorage.setItem('infos', JSON.stringify(infos))
                 navigate("/dashboard");
-            }
+            }       
             else{
                 setErrMsg(response.data.message)
             }
@@ -49,7 +53,7 @@ function Connexion() {
                             <div className="error-container">{errMsg}</div>
                         </form>
                         <Link to="/inscription">
-                            <a>Pas de compte? S'inscrire</a>
+                            <span>Pas de compte? S'inscrire</span>
                         </Link>
                         
                         <a>Mot de passe oublié</a>

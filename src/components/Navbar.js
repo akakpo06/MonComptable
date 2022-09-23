@@ -1,7 +1,22 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Navbar() {
 
+    const navigate = useNavigate();
+
+    const disconnect = () => {
+        const infos = JSON.parse(window.localStorage.getItem('infos'));
+        axios.get(`http://moncomptable.localhost:80/api/user/disconnect.php/${infos.id}`).then((response) => {
+            console.log(response.data)
+            if(response.data.status) {
+                window.localStorage.removeItem('infos');
+                navigate("/");
+            }
+        })
+
+    }
     return(
         <div className="navbar-container">
             <div className="logo-container">
@@ -31,7 +46,7 @@ function Navbar() {
             </div>
             <div className="buttons-container">
                 <Link to="/">
-                    <button className="btn-second-type">
+                    <button className="btn-second-type" onClick={disconnect}>
                             <span>Se déconnecter</span>
                     </button>
                 </Link>

@@ -24,11 +24,11 @@ function Declaration(props) {
                     <div className="double-input-container">
                         <label>
                             <span>Nature de l'impôt :</span>
-                            <select name="nature-impot" onChange={handleChange}>
+                            <select name="nature" onChange={handleChange}>
                                 <optgroup>
-                                    <option>Nature de l'impôt</option>
-                                    <option>Retenu Sur Salaire</option>
-                                    <option>Retenu Sur Salaire</option>
+                                    <option value="">Nature de l'impôt</option>
+                                    <option value="RSTS(Retenue Sur Salaire)">Retenu Sur Salaire</option>
+                                    <option value="Impôt sur les sociétés">Impôt sur les sociétés</option>
                                 </optgroup>
                             </select>
                         </label>
@@ -36,8 +36,8 @@ function Declaration(props) {
                             <span>Néant :</span>
                             <select name="neant" onChange={handleChange}>
                                 <optgroup>
-                                    <option value="non">Non</option>
-                                    <option value="oui">Oui</option>
+                                    <option value={0}>Non</option>
+                                    <option value={1}>Oui</option>
                                 </optgroup>
                             </select>
                         </label>
@@ -45,7 +45,7 @@ function Declaration(props) {
                     <div className="double-input-container">
                         <label>
                             <span>Période :</span>
-                            <select name="periode" onChange={handleChange}>
+                            <select name="period" onChange={handleChange}>
                                 <optgroup>
                                     <option value="">Période</option>
                                     <option value="janvier">Janvier</option>
@@ -55,7 +55,7 @@ function Declaration(props) {
                         </label>
                         <label>
                             <span>Année :</span>
-                            <select name="declaration-year" onChange={handleChange}>
+                            <select name="year" onChange={handleChange}>
                                 <optgroup>
                                     <option value="">Année</option>
                                     <option value="2022">2022</option>
